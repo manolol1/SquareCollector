@@ -1,0 +1,97 @@
+package xyz.manolol.squarecollector;
+
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+
+public class GameOverScreen extends ScreenAdapter {
+
+    private final SquareCollector game;
+    private int score;
+
+    SpriteBatch batch;
+    TextWriter textWriter;
+
+    OrthographicCamera camera;
+    FitViewport viewport;
+
+    public GameOverScreen(SquareCollector game, int score) {
+        this.game = game;
+        this.score = score;
+
+        this.camera = new OrthographicCamera();
+        this.viewport = new FitViewport(1920, 1080, camera);
+
+        batch = new SpriteBatch();
+        textWriter = new TextWriter(batch, "fonts/Ubuntu-Regular.ttf", viewport);
+
+    }
+
+    @Override
+    public void render(float delta) {
+        //**** INPUT ****//
+
+        // restart game
+        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            game.setScreen(new GameScreen(game));
+            return;
+        }
+
+        // Toggle Mouse Controls
+        if (Gdx.app.getType() == Application.ApplicationType.Desktop && Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            game.toggleMouseControls();
+        }
+
+        //**** RENDER ****//
+        ScreenUtils.clear(0, 0, 0, 0);
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        
+        textWriter.drawTextCenterXY("GAME OVER", 120, 300, 1, 0, 0);
+        textWriter.drawTextCenterXY("Score: " + score, 90, 160);
+
+        if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
+            textWriter.drawTextCenterXY("Press SPACE to try again!", 60, 0);
+
+            if (game.getMouseControls()) {
+                textWriter.drawTextCenterXY("Mouse Controls: ON", 45, -320);
+                textWriter.drawTextCenterXY("Press M to toggle", 40, -390);
+            } else {
+                textWriter.drawTextCenterXY("Mouse Controls: OFF", 45, -320);
+                textWriter.drawTextCenterXY("Press M to toggle", 40, -390);
+            }
+        } else if (Gdx.app.getType() == Application.ApplicationType.Android) {
+            textWriter.drawTextCenterXY("Tap the screen to try again!", 60, -250);
+        } else {
+            textWriter.drawTextCenterXY("Press SPACE or tap the screen to try again!", 60, -250);
+        }
+
+        batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height);
+        // center camera
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+        camera.update();
+    }
+
+    @Override
+    public void hide() {
+        this.dispose();
+    }
+
+    @Override
+    public void dispose() {
+        batch.dispose();
+        textWriter.dispose();
+        super.dispose();
+    }
+}
