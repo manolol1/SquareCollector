@@ -1,7 +1,6 @@
 package xyz.manolol.squarecollector;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
