@@ -59,8 +59,8 @@ public class TextWriter {
     public void DrawTextTopRightXY(String text, int fontSize, float xOffset, float yOffset) {
         BitmapFont font = getFont(fontSize);
         layout.setText(font, text);
-        float x = (viewport.getWorldWidth() - layout.width) - xOffset;
-        float y = (viewport.getWorldHeight() - layout.height) - yOffset;
+        float x = (viewport.getWorldWidth() - xOffset) - layout.height;
+        float y = (viewport.getWorldHeight() - yOffset) - layout.height;
         font.draw(batch, layout, x, y);
     }
 

@@ -147,8 +147,9 @@ public class GameScreen extends ScreenAdapter {
 
         shapeRenderer.end();
 
+        batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        textWriter.DrawTextTopRightXY("" + score, 60, 50, 0);
+        textWriter.DrawTextTopRightXY("" + score, 60, 30, 0);
         batch.end();
     }
 
