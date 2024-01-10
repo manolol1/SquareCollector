@@ -58,6 +58,24 @@ project(":android") {
 
     configurations { natives }
 
+    android {
+        signingConfigs {
+            release {
+                storeFile file("android.keystore")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+            }
+        }
+
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+                // Other release settings...
+            }
+        }
+    }
+
     dependencies {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"

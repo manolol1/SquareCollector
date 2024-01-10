@@ -19,3 +19,6 @@ out/
 gen/
 local.properties
 !gradle/
+
+*.keystore
+gradle.properties
