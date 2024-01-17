@@ -25,6 +25,15 @@ public class SquareCollector extends Game {
 		PREFS.flush();
 	}
 
+	public int getHighscore() {
+		return PREFS.getInteger("highscore", 0);
+	}
+
+	public void setHighscore(int highscore) {
+		PREFS.putInteger("highscore", highscore);
+		PREFS.flush();
+	}
+
 	public void toggleMouseControls() {
 		if (getMouseControls()) {
 			setMouseControls(false);

@@ -43,6 +43,7 @@ public class GameScreen extends ScreenAdapter {
     private long lastDifficultyIncreaseTime;
 
     private int score = 0;
+    private boolean isNewHighscore = false;
 
     Array<Rectangle> squares;
 
@@ -118,7 +119,11 @@ public class GameScreen extends ScreenAdapter {
             square.y -= squareSpeed * delta;
 
             if (square.y + SQUARE_SIZE < 0) {
-                GAME.setScreen(new GameOverScreen(score));
+                if (score > GAME.getHighscore()) {
+                    GAME.setHighscore(score);
+                    isNewHighscore = true;
+                }
+                GAME.setScreen(new GameOverScreen(score, isNewHighscore));
                 return;
             }
 

@@ -11,6 +11,7 @@ import static xyz.manolol.squarecollector.SquareCollector.GAME;
 public class GameOverScreen extends ScreenAdapter {
 
     private int score;
+    private boolean isNewHighscore;
 
     SpriteBatch batch;
     TextWriter textWriter;
@@ -18,8 +19,9 @@ public class GameOverScreen extends ScreenAdapter {
     OrthographicCamera camera;
     FitViewport viewport;
 
-    public GameOverScreen(int score) {
+    public GameOverScreen(int score, boolean isNewHighscore) {
         this.score = score;
+        this.isNewHighscore = isNewHighscore;
 
         this.camera = new OrthographicCamera();
         this.viewport = new FitViewport(1920, 1080, camera);
@@ -50,11 +52,17 @@ public class GameOverScreen extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         
-        textWriter.drawTextCenterXY("GAME OVER", 120, 300, 1, 0, 0);
-        textWriter.drawTextCenterXY("Score: " + score, 90, 160);
+        textWriter.drawTextCenterXY("GAME OVER", 120, 320, 1, 0, 0);
+        textWriter.drawTextCenterXY("Score: " + score, 90, 180);
+
+        if (isNewHighscore) {
+            textWriter.drawTextCenterXY("NEW HIGHSCORE: " + GAME.getHighscore(), 90, 50);
+        } else {
+            textWriter.drawTextCenterXY("Highscore: " + GAME.getHighscore(), 90, 50);
+        }
 
         if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
-            textWriter.drawTextCenterXY("Press SPACE to try again!", 60, 0);
+            textWriter.drawTextCenterXY("Press SPACE to try again!", 60, -120);
 
             if (GAME.getMouseControls()) {
                 textWriter.drawTextCenterXY("Mouse Controls: ON", 45, -320);
