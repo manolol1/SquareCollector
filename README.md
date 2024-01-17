@@ -1,6 +1,6 @@
 # SquareCollector
 
-**SquareCollector is a little arcade game made with libGDX where the goal is to collect as many falling squares as possible.**
+**SquareCollector is a little arcade game made with libGDX. The goal of the game is to collect as many falling squares as possible.**
 
 ## Running Instructions
 
