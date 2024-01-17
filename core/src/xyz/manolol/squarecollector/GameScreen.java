@@ -21,19 +21,19 @@ public class GameScreen extends ScreenAdapter {
 
     private final float COLLECTOR_WIDTH = 150;
     private final float COLLECTOR_HEIGHT = 35;
-    private final float COLLECTOR_SPEED = 1200;
+    private final float COLLECTOR_SPEED = 1500;
 
     private final float SQUARE_SIZE = 60;
     private final float SQUARE_START_SPEED = 200;
-    private final float SQUARE_MAX_SPEED = 800;
+    private final float SQUARE_MAX_SPEED = 900;
     private final float SQUARE_SPEED_INCREASE = 10;
     private final int SQUARE_SPAWN_START_INTERVAL = 1500; // ms
-    private final int MIN_SQUARE_SPAWN_INTERVAL = 500; // ms
-    private final int SQUARE_SPAWN_INTERVAL_DECREASE = 50;
+    private final int MIN_SQUARE_SPAWN_INTERVAL = 400; // ms
+    private final int SQUARE_SPAWN_INTERVAL_DECREASE = 30;
 
     private final int DIFFICULTY_INCREASE_START_INTERVAL = 3000; // ms
     private final int DIFFICULTY_INCREASE_INTERVAL_DECREASE = 10; // ms
-    private final int MIN_DIFFICULTY_INCREASE_INTERVAL = 1000; // ms
+    private final int MIN_DIFFICULTY_INCREASE_INTERVAL = 1200; // ms
 
     private float squareSpeed = SQUARE_START_SPEED;
     private float squareSpawnInterval = SQUARE_SPAWN_START_INTERVAL;
