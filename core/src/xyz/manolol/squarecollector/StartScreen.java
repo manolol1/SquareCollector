@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+import static xyz.manolol.squarecollector.SquareCollector.GAME;
+
 public class StartScreen extends ScreenAdapter {
     private final SquareCollector game;
 
@@ -36,7 +38,7 @@ public class StartScreen extends ScreenAdapter {
 
         // Start Game
         if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            game.setScreen(new GameScreen(game));
+            GAME.setScreen(new GameScreen());
             return;
         }
 

@@ -15,9 +15,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Iterator;
 
-public class GameScreen extends ScreenAdapter {
+import static xyz.manolol.squarecollector.SquareCollector.GAME;
 
-    private final SquareCollector game;
+public class GameScreen extends ScreenAdapter {
 
     private final float COLLECTOR_WIDTH = 150;
     private final float COLLECTOR_HEIGHT = 35;
@@ -55,8 +55,7 @@ public class GameScreen extends ScreenAdapter {
 
     Rectangle collector;
 
-    public GameScreen(SquareCollector game) {
-        this.game = game;
+    public GameScreen() {
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(1280, 720, camera);
@@ -85,7 +84,7 @@ public class GameScreen extends ScreenAdapter {
         }
 
         // Touch and Mouse
-        if (Gdx.input.isTouched() || game.getMouseControls()) {
+        if (Gdx.input.isTouched() || GAME.getMouseControls()) {
             collector.x = viewport.unproject(new Vector3(Gdx.input.getX(), 0, 0)).x - COLLECTOR_WIDTH / 2;
         }
 
@@ -119,7 +118,7 @@ public class GameScreen extends ScreenAdapter {
             square.y -= squareSpeed * delta;
 
             if (square.y + SQUARE_SIZE < 0) {
-                game.setScreen(new GameOverScreen(game, score));
+                GAME.setScreen(new GameOverScreen(score));
                 return;
             }
 

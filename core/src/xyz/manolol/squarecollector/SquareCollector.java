@@ -1,17 +1,21 @@
 package xyz.manolol.squarecollector;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 
 public class SquareCollector extends Game {
 
-	public SquareCollector game;
+	public static SquareCollector GAME;
+	public static Preferences PREFS;
 
 	private boolean mouseControls = true;
 
 	@Override
 	public void create() {
-		game = this;
-		this.setScreen(new StartScreen(game));
+		GAME = this;
+		PREFS = Gdx.app.getPreferences("Data");
+		this.setScreen(new StartScreen(GAME));
 	}
 
 	public boolean getMouseControls() {

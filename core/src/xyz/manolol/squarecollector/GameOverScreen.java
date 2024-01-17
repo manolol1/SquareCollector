@@ -1,17 +1,15 @@
 package xyz.manolol.squarecollector;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+import static xyz.manolol.squarecollector.SquareCollector.GAME;
+
 public class GameOverScreen extends ScreenAdapter {
 
-    private final SquareCollector game;
     private int score;
 
     SpriteBatch batch;
@@ -20,8 +18,7 @@ public class GameOverScreen extends ScreenAdapter {
     OrthographicCamera camera;
     FitViewport viewport;
 
-    public GameOverScreen(SquareCollector game, int score) {
-        this.game = game;
+    public GameOverScreen(int score) {
         this.score = score;
 
         this.camera = new OrthographicCamera();
@@ -38,13 +35,13 @@ public class GameOverScreen extends ScreenAdapter {
 
         // restart game
         if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            game.setScreen(new GameScreen(game));
+            GAME.setScreen(new GameScreen());
             return;
         }
 
         // Toggle Mouse Controls
         if (Gdx.app.getType() == Application.ApplicationType.Desktop && Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            game.toggleMouseControls();
+            GAME.toggleMouseControls();
         }
 
         //**** RENDER ****//
@@ -59,7 +56,7 @@ public class GameOverScreen extends ScreenAdapter {
         if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
             textWriter.drawTextCenterXY("Press SPACE to try again!", 60, 0);
 
-            if (game.getMouseControls()) {
+            if (GAME.getMouseControls()) {
                 textWriter.drawTextCenterXY("Mouse Controls: ON", 45, -320);
                 textWriter.drawTextCenterXY("Press M to toggle", 40, -390);
             } else {
