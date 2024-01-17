@@ -9,8 +9,6 @@ public class SquareCollector extends Game {
 	public static SquareCollector GAME;
 	public static Preferences PREFS;
 
-	private boolean mouseControls = true;
-
 	@Override
 	public void create() {
 		GAME = this;
@@ -19,18 +17,19 @@ public class SquareCollector extends Game {
 	}
 
 	public boolean getMouseControls() {
-		return mouseControls;
+		return PREFS.getBoolean("mouseControls", true);
 	}
 
 	public void setMouseControls(boolean mouseControls) {
-		this.mouseControls = mouseControls;
+		PREFS.putBoolean("mouseControls", mouseControls);
+		PREFS.flush();
 	}
 
 	public void toggleMouseControls() {
-		if (mouseControls) {
-			mouseControls = false;
+		if (getMouseControls()) {
+			setMouseControls(false);
 		} else {
-			mouseControls = true;
+			setMouseControls(true);
 		}
 	}
 }
