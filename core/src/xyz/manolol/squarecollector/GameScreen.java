@@ -47,10 +47,10 @@ public class GameScreen extends ScreenAdapter {
 
     Array<Rectangle> squares;
 
-    private OrthographicCamera camera;
-    private Viewport viewport;
-    private SpriteBatch batch;
-    private TextWriter textWriter;
+    final private OrthographicCamera camera;
+    final private Viewport viewport;
+    final private SpriteBatch batch;
+    final private TextWriter textWriter;
 
     ShapeRenderer shapeRenderer;
 

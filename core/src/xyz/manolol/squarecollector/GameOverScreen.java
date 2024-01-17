@@ -13,11 +13,11 @@ public class GameOverScreen extends ScreenAdapter {
     private int score;
     private boolean isNewHighscore;
 
-    SpriteBatch batch;
-    TextWriter textWriter;
+    private final SpriteBatch batch;
+    private final TextWriter textWriter;
 
-    OrthographicCamera camera;
-    FitViewport viewport;
+    private final OrthographicCamera camera;
+    private final FitViewport viewport;
 
     public GameOverScreen(int score, boolean isNewHighscore) {
         this.score = score;

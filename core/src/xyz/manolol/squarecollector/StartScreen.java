@@ -14,11 +14,10 @@ import static xyz.manolol.squarecollector.SquareCollector.GAME;
 public class StartScreen extends ScreenAdapter {
     private final SquareCollector game;
 
-    SpriteBatch batch;
-    TextWriter textWriter;
-
-    OrthographicCamera camera;
-    FitViewport viewport;
+    private final SpriteBatch batch;
+    private final TextWriter textWriter;
+    private final OrthographicCamera camera;
+    private final FitViewport viewport;
 
     public StartScreen(SquareCollector game) {
         this.game = game;
