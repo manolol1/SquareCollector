@@ -22,3 +22,4 @@ local.properties
 
 *.keystore
 gradle.properties
+local.properties
