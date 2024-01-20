@@ -12,7 +12,7 @@ public class SquareCollector extends Game {
 	@Override
 	public void create() {
 		GAME = this;
-		PREFS = Gdx.app.getPreferences("Data");
+		PREFS = Gdx.app.getPreferences("SquareCollectorData");
 		this.setScreen(new StartScreen(GAME));
 	}
 
