@@ -20,7 +20,7 @@ For this method, a Java Runtime needs to be installed.
 
 ### Native Linux Executable
 
-This executable doesn't require installing any Java Runtime. All the necessary parts are included in the file.
+Due to an issue with some native code, the Linux executable requires a Java Runtime aswell. Luckily, that's pretty easy to install on most Linux distributions.
 
 1. Download the latest native_linux file from the release tab.
 2. You most likely need to add executing permissions to the file. On most distributions this can be done by running `sudo chmod +x Exact_File_Name`.
