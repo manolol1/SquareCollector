@@ -1,3 +1,5 @@
+# This repository was moved to https://forgejo.manolol.xyz/mario/SquareCollector
+
 # SquareCollector
 
 **SquareCollector is a little arcade game made with libGDX. The goal of the game is to collect as many falling squares as possible.**
